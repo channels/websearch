@@ -1,0 +1,54 @@
+
+<div id="feedControl">
+  <div class="searchForm">
+    <form method="get" action="/search">
+      <input type="text" class="searchMetachannels"  name="searchTerms", id="searchBox" style="vertical-align:middle;color:#999;"  value="&nbsp;Channels Video Search" onfocus="searchClear ()" />
+      <input type="image" src="/images/search-metachannels.png" style="vertical-align:middle;"/>
+    </form>
+  </div>
+</div>
+
+<%  if @results.empty? %>
+<% 
+    else 
+      items = @results["rss"]["channel"]["item"]
+%>
+      <%= render :partial => 'search_result', :collection => items %>
+<% end %>
+
+<script src="http://www.google.com/jsapi/?key=ABQIAAAAeO86EA-_exy1v5ntrv7EoBSyrX7DjFb1K_7ZXROnDZB1U-iJxBRJZ2xBB1k6k_fOk4so7h-ALZ3LAg" type="text/javascript">
+</script>
+
+<script type="text/javascript"> //<![CDATA[
+  // load the AJAX Feed API
+  google.load("feeds", "1");
+  google.load("jquery", "1");
+
+  function searchClear() {
+    // 1. get a ref to the element
+    var el = document.getElementById("searchBox");
+    // 2. use the ref to clear the value
+    el.value=" ";
+    //3. use the ref to set a new style
+    el.style.color = "#111";
+    //this.value='&nbsp;'
+	}
+  
+  function ShowPreview(url, name, elemId) {
+    var el = document.getElementById("bppreview" + elemId)
+
+    if (el.style.display == "block") {
+      el.style.display = "none";
+    }
+    else {
+      el.innerHTML = '<div class="infoMsg">Loading...</div>';
+      var feedControl = new google.feeds.FeedControl();
+      feedControl.addFeed(url, name);
+      feedControl.setNumEntries(10);
+      feedControl.draw(el);
+      el.style.display = "block";
+    }
+  }
+  
+  //]]>
+</script>

@@ -1,0 +1,27 @@
+<div>
+  <div class='itemTitle'> 
+    <span class='noDec'>
+      <span class="showLabel">SHOW: </span>
+      <strong><%= search_result["title"] %></strong>
+    </span> 
+  </div>
+
+  <div class="showThumb" align="center" > 
+    <img src="<%= search_result["thumbnail"]["url"] %>"/><br />
+    <div class="metaData"> 
+      <%= search_result["episode_count"] %> Episodes <br />   
+      Updated <%= time_ago_in_words(Time.parse(search_result["last_published"])) %> ago
+    </div>
+  </div>
+
+  <div class='des'> 
+    <%= search_result["description"] %> 
+  </div>
+  <div class='buttons'> 
+    <a class='' href='javascript:ShowPreview("<%= search_result["link"] %>","<%= search_result["title"] %>","<%= search_result_counter%>")'>View Episodes</a>
+  </div>
+
+  <div class='previewPanel' id='bppreview<%= search_result_counter%>'>Loading...</div>
+  <div style="width:100%;height:1px;margin 0 0 -1px;clear: both"></div>
+</div>
+
