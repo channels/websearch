@@ -1,1 +1,4 @@
 config/metachannels-api.yml
+config/gdata.yml
+db/*.sqlite3
+log/*.log
