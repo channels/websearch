@@ -2,7 +2,7 @@
   <div class='itemTitle'> 
     <span class='noDec'>
       <span class="showLabel">SHOW: </span>
-      <strong><%= search_result["title"] %></strong>
+      <strong><%= h search_result["title"] %></strong>
     </span> 
   </div>
 
@@ -10,7 +10,7 @@
     <img src="<%= search_result["thumbnail"]["url"] %>"/><br />
     <div class="metaData"> 
       <%= search_result["episode_count"] %> Episodes <br />   
-      Updated <%= time_ago_in_words(Time.parse(search_result["last_published"])) %> ago
+      Updated <%= h time_ago_in_words(Time.parse(search_result["last_published"])) %> ago
     </div>
   </div>
 
@@ -18,7 +18,7 @@
     <%= search_result["description"] %> 
   </div>
   <div class='buttons'> 
-    <a class='' href='javascript:ShowPreview("<%= search_result["link"] %>","<%= search_result["title"] %>","<%= search_result_counter%>")'>View Episodes</a>
+    <a class='' href='javascript:ShowPreview("<%= escape_javascript(search_result["link"]) %>","<%= escape_javascript(search_result["title"]) %>","<%= escape_javascript(search_result_counter) %>")'>View Episodes</a>
   </div>
 
   <div class='previewPanel' id='bppreview<%= search_result_counter%>'>Loading...</div>
