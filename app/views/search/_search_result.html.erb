@@ -10,7 +10,9 @@
     <img src="<%= search_result["thumbnail"]["url"] %>"/><br />
     <div class="metaData"> 
       <%= search_result["episode_count"] %> Episodes <br />   
-      Updated <%= h time_ago_in_words(Time.parse(search_result["last_published"])) %> ago
+      <% unless search_result["last_published"].blank? %>
+        Updated <%= h time_ago_in_words(Time.parse(search_result["last_published"])) %> ago
+      <% end %>
     </div>
   </div>
 
