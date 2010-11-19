@@ -7,7 +7,10 @@
     </form>
   </div>
 </div>
-<%  if @results["rss"]["channel"]["item"].blank? %>
+<%  if @results.empty?
+      # do nothing
+    elsif @results["rss"]["channel"]["item"].blank? 
+%>
   <div>No results</div>
 <% 
     # when one result returned, it's a hash instead of an array
