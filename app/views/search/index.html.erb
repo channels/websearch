@@ -19,9 +19,16 @@
     else 
       items = @results["rss"]["channel"]["item"]
     end
+
+    if !items.nil?
+      # now convert items to a WillPaginate::Collection
+      @shows = WillPaginate::Collection.new(@page, @results["rss"]["channel"]["itemsPerPage"].to_i, @results["rss"]["channel"]["totalResults"].to_i)
+      @shows.replace(items)
+    end
 %>
   <%= render :partial => 'search_result', :collection => items %>
 
+  <%= will_paginate(@shows, :class => 'clear', :page_links => false, :param_name => 'startPage') if !@shows.nil? %>
 <script src="http://www.google.com/jsapi/?key=<%= GDATA_APIKEY %>" type="text/javascript">
 </script>
 
