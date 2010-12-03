@@ -11,7 +11,7 @@
       # do nothing
     elsif @results["rss"]["channel"]["item"].blank? 
 %>
-  <div>No results</div>
+<div>No results found for <strong><%= params[:searchTerms] %></strong></div>
 <% 
     # when one result returned, it's a hash instead of an array
     elsif @results["rss"]["channel"]["item"].is_a? Hash
