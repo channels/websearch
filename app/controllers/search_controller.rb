@@ -7,7 +7,7 @@ class SearchController < ApplicationController
       @results = []
     else
       @api = MetachannelsApi.new(METACHANNELS_APIKEY, METACHANNELS_ENDPOINT)
-      @results = @api.search("searchTerms" => params[:searchTerms])
+      @results = @api.search("searchTerms" => params[:searchTerms], "order" => "keyword")
     end
   end
 
