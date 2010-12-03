@@ -20,7 +20,7 @@
     <%= search_result["description"] %> 
   </div>
   <div class='buttons'> 
-    <a class='' href='javascript:ShowPreview("<%= escape_javascript(search_result["link"]) %>","<%= escape_javascript(search_result["title"]) %>","<%= search_result_counter %>")'>View Episodes</a>
+    <a id="<%= "result_#{search_result.object_id}" %>" class='' href='javascript:ShowPreview("<%= escape_javascript(search_result["link"]) %>","<%= escape_javascript(search_result["title"]) %>","<%= search_result_counter %>", "<%=  "result_#{search_result.object_id}" %>" )'>View Episodes</a>
   </div>
 
   <div class='previewPanel' id='bppreview<%= search_result_counter%>'>Loading...</div>

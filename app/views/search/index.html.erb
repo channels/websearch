@@ -40,11 +40,13 @@
     //this.value='&nbsp;'
 	}
   
-  function ShowPreview(url, name, elemId) {
-    var el = document.getElementById("bppreview" + elemId)
+  function ShowPreview(url, name, elemId, linkId) {
+    var el = document.getElementById("bppreview" + elemId);
+    var linkEl = document.getElementById(linkId);
 
     if (el.style.display == "block") {
       el.style.display = "none";
+      linkEl.innerHTML = 'View Episodes';
     }
     else {
       el.innerHTML = '<div class="infoMsg">Loading...</div>';
@@ -53,8 +55,10 @@
       feedControl.setNumEntries(10);
       feedControl.draw(el);
       el.style.display = "block";
+      linkEl.innerHTML = 'Hide Episodes';
     }
   }
+
   
   //]]>
 </script>
