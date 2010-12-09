@@ -9,6 +9,10 @@
 </div>
 <%  if @results.empty?
       # do nothing
+    elsif @results.has_key?("error")
+%>
+<div>The service is unavailable for your device. (<%= @results["error"] %>)</div>
+<%
     elsif @results["rss"]["channel"]["item"].blank? 
 %>
 <div>No results found for <strong><%= params[:searchTerms] %></strong></div>
@@ -69,3 +73,10 @@
   
   //]]>
 </script>
+
+<% if params[:debug] %>
+  <%= content_tag(:strong, "Debug Info") %>
+  <%= content_tag(:div, "UserAgent: #{request.user_agent}") %>
+  <%= content_tag(:div, "DeviceProfile API Key: #{@api_key.slice(0, @api_key.length/2)}") %>
+  <%= content_tag(:div, "MetaChannels API Endpoint: #{MetaChannelsConfig.endpoint}") %>
+<% end %>

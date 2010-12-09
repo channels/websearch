@@ -1,3 +1,11 @@
-apikey: 'GET YOUR OWN API KEY'
 endpoint: 'http://api.metachannels.com/api'
-
+# if no regex matches a user agent in device profiles below, the app defaults to this key
+general_apikey: 'PUT YOUR OWN API KEY'
+# if you want to use multiple apikeys for different user agents
+device_profiles:
+  android21: 
+    apikey: 'APIKEY FOR ANDROID 2.1'
+    user_agent_regex: 'Some Regex to match Android 2.1'
+  iphone4: 
+    apikey: 'APIKEY FOR IPHONE'
+    user_agent_regex: 'Some Regex to match iPhone'
