@@ -188,7 +188,7 @@ ul#tabnav li a { /* settings for all tab links */
 }
 .showThumb {
 	float:left;
-	margin:4px 6px 4px 6px;
+	margin:5px 6px 6px 0px;
 	padding: 1px 2px 1px 2px;
 	width:90px;
 	height:70px;
