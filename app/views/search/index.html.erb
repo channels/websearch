@@ -63,6 +63,7 @@
 
     if (el.style.display == "block") {
       el.style.display = "none";
+      linkEl.innerHTML = linkEl.originalInnerHTML;
     }
     else {
       el.innerHTML = '<div class="infoMsg">Loading...</div>';
@@ -71,6 +72,8 @@
       feedControl.setNumEntries(10);
       feedControl.draw(el);
       el.style.display = "block";
+      linkEl.originalInnerHTML = linkEl.innerHTML;
+      linkEl.innerHTML = "Hide Episodes";
     }
   }
 
